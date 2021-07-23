@@ -91,7 +91,7 @@
 #include "SerialCommander.h"
 #include "RpcClasses.h"
 #include "Motor.h"
-#include "MotorCom\MotorCom.h"
+#include "MotorCom.h"
 #include "LIS3DH.h"
 #define COMODO_BSP_SAP_VERSION		"1.00a19"
 #define COMODO_BSP_MANIFEST		"COMODO Swatch 1746"
