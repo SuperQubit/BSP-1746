@@ -19,12 +19,12 @@
 using namespace std;
 #pragma diag_suppress 1299
 
-MotorCom::MotorCom() : RPC("MC"), scom(PC_10,PC_11,115200),BLCmd(&scom)
+MotorCom::MotorCom() : RPC("MC"), scom(PC_10,PC_11),BLCmd(&scom)
 {
 	HallPhaseShiftCorrection=0;
 }
 
-MotorCom::MotorCom(PinName tx, PinName rx, const char *name, int baudrate) : RPC(name), scom(tx,rx,baudrate),BLCmd(&scom)
+MotorCom::MotorCom(PinName tx, PinName rx, const char *name, int baudrate) : RPC(name), scom(tx,rx),BLCmd(&scom)
 {
 	watch.start();
 	HallPhaseShiftCorrection=0;
@@ -34,7 +34,7 @@ MotorCom::MotorCom(PinName tx, PinName rx, const char *name, int baudrate) : RPC
 
 void MotorCom::Puts(const char *s)
 {
-	scom.printf(s);
+	scom.puts(s);
 }
 
 const char* MotorCom::Gets(void)

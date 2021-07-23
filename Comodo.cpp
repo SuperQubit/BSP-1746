@@ -14,11 +14,13 @@
 //============================================================================//
 /* Includes ------------------------------------------------------------------*/
 //============================================================================//
+#include "mbed.h"
+#include "mbed_wait_api.h"
 #include "Comodo.h"
 #include "Motor.h"
 #include "stm32f3xx_ll_gpio.h"
 #include "LIS3DH.h"
-#include <Math.h>
+#include <math.h>
 //Motor Mot1(PB_0 ,PC_5,PB_1, PA_7,  PA_6,PA_5,PA_4,"M1");
 //Motor Mot2(PC_13,PB_6,PB_4, PC_0,  PC_3,PC_2,PC_1,"M2");
 
@@ -84,7 +86,7 @@ void Comodo::_Runner(const void *args){
 		
         //instance->_MsgProcess();
 		//wait(0.02);
-		wait_ms(1);
+		wait_us(1000);
 		//--- LOST BAR CHECK
 		if(VBARsimulate){
 			VBARraw=VBARsimulate;
@@ -198,7 +200,7 @@ int Comodo::SReset()
 	SRESET.write(0);
 	wait_us(100);
 	SRESET.write(1);
-	wait_ms(100);
+	wait_us(100000);
 	LL_GPIO_SetPinMode((GPIO_TypeDef *) GPIOD_BASE, LL_GPIO_PIN_2, LL_GPIO_MODE_ALTERNATE);
 	LL_GPIO_SetPinMode((GPIO_TypeDef *) GPIOC_BASE, LL_GPIO_PIN_11, LL_GPIO_MODE_ALTERNATE);
 	_RebootCS=false;
@@ -225,7 +227,7 @@ int Comodo::SReBoot()
 	SBOOT0.write(1);	
 	wait_us(100);
 	SRESET.write(1);
-	wait_ms(100);
+	wait_us(100000);
 	LL_GPIO_SetPinMode((GPIO_TypeDef *) GPIOD_BASE, LL_GPIO_PIN_2, LL_GPIO_MODE_ALTERNATE);
 	LL_GPIO_SetPinMode((GPIO_TypeDef *) GPIOC_BASE, LL_GPIO_PIN_11, LL_GPIO_MODE_ALTERNATE);
 	return 1;

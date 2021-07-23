@@ -95,6 +95,7 @@ float Motor::ThermalModelStep(float Pc, float Ip, float dt)
 	 TM.iTc= (uint16_t)(TM.Tc)-223;
 	 TM.iTj= (uint16_t)(TM.Tj)-223;
 	 TM.iW= (uint16_t)(TM.W *1000.0f);
+	 return 0.0f;
 }
 
 void Motor::Clock(void)

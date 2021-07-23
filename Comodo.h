@@ -76,7 +76,7 @@
 #ifndef __COMODO_H
 #define __COMODO_H
 
-#pragma diag_suppress 1299
+//#pragma diag_suppress 1299
 
 
 
@@ -84,12 +84,14 @@
 /* Includes ------------------------------------------------------------------*/
 //============================================================================//
 #include "mbed.h"
+#include "SerialOw.h"
+
 #include <vector>
 #include "rpc.h"
 #include "SerialCommander.h"
 #include "RpcClasses.h"
-#include "Motor.H"
-#include "MotorCOM\MotorCom.h"
+#include "Motor.h"
+#include "MotorCom\MotorCom.h"
 #include "LIS3DH.h"
 #define COMODO_BSP_SAP_VERSION		"1.00a19"
 #define COMODO_BSP_MANIFEST		"COMODO Swatch 1746"

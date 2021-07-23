@@ -15,14 +15,18 @@
 /* Includes ------------------------------------------------------------------*/
 //============================================================================//
 #include "SerialBL_Host.h"
+
 #include "ComodoDriveFW.h"
 
+const unsigned char ComodoDriveBinaryImage[1024]={0};
+const unsigned long ComodoDriveBinaryImage_length=32768;
+const char ComodoDriveImageManifest[32]= "533Comodo HFOC 2.13 SDK";
 
 #define msec(x)  ( (x) * 1000)
 #define sec(x)  ( (x) * 1000000)
 
 
-namespace mbed {
+//namespace mbed {
 	
 SerialBLHost::SerialBLHost(Serial *seriale){
 	pcom=seriale;
@@ -42,7 +46,7 @@ bool SerialBLHost::InitChip(){
 	pcom->putc(INIT);
 	for	(cnt=0;cnt<10;cnt++)
 	{
-		wait_ms(10);
+		wait_us(10000);
 		if(pcom->readable())
 		{
 			c=pcom->getc();
@@ -416,7 +420,7 @@ bool SerialBLHost::cmdComputeCRC(uint32_t *crc)
 		return true;
 }
 
-}
+//}
 
 
 //============================================================================//
